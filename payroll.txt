@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class RunEmployee {
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+    
+    System.out.print("Enter Employee Name: ");
+    String name = in.nextLine();
+    
+    System.out.println("\nEmployee Types:\n  F - Full Time\n  P - Part Time");
+    System.out.print("Enter Employee Type:");
+    String type = in.nextLine();
+    if (type.compareToIgnoreCase("F") == 0) {
+      FullTimeEmployee employee = new FullTimeEmployee(name);
+      
+      System.out.print("\nEnter Monthly Salary: ");
+      employee.setMonthlySalary(in.nextDouble());
+      
+      System.out.println(employee);
+    } else if(type.compareToIgnoreCase("P") == 0) {
+      PartTimeEmployee employee = new PartTimeEmployee(name);
+      
+      System.out.print("\nEnter Rate Per Hour: ");
+      double rate = in.nextDouble();
+      
+      System.out.print("\nEnter Number of Hours Worked: ");
+      employee.setWage(rate, in.nextInt());
+      
+      System.out.println(employee);
+    } else {
+      System.out.println("Error: Ivalid Employee Type!");
+    }
+  }
+}
